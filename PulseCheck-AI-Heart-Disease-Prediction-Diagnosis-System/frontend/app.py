@@ -109,7 +109,7 @@ if st.button("Analyze Heart Health"):
     }
 
     try:
-        res = requests.post("http://127.0.0.1:5000/predict", json=payload)
+        res = requests.post("https://pulsecheck-backend-ply7.onrender.com", json=payload)
         result = res.json()['prediction']
 
         colA, colB = st.columns(2)
