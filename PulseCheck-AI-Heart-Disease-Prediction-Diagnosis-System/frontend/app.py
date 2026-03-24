@@ -109,7 +109,7 @@ if st.button("Analyze Heart Health"):
     }
 
     try:
-        res = requests.post("https://pulsecheck-backend-ply7.onrender.com", json=payload)
+        res = requests.post("https://pulsecheck-backend-ply7.onrender.com/predict", json=payload)
         result = res.json()['prediction']
 
         colA, colB = st.columns(2)
@@ -135,5 +135,6 @@ if st.button("Analyze Heart Health"):
 
             st.plotly_chart(fig, use_container_width=True)
 
-    except:
-        st.error("Backend not running")
+    except Exception as e:
+        st.error(f"Error: {str(e)}")
+        st.error("Backend not running or connection failed")
